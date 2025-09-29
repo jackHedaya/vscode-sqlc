@@ -4,6 +4,8 @@
   "description": "",
   "version": "0.0.1",
   "publisher": "jackHedaya",
+  "repository": "https://github.com/jackHedaya/vscode-sqlc",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.104.1"
   },

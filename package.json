@@ -3,6 +3,7 @@
   "displayName": "sqlc",
   "description": "",
   "version": "0.0.1",
+  "publisher": "jackHedaya",
   "engines": {
     "vscode": "^1.104.1"
   },
@@ -28,7 +29,8 @@
     "pretest": "yarn run compile && yarn run lint",
     "lint": "eslint src",
     "test": "vscode-test",
-    "test:unit": "yarn run compile && mocha out/**/*.test.js"
+    "test:unit": "yarn run compile && mocha out/**/*.test.js",
+    "package": "yarn run compile && vsce package"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -38,6 +40,7 @@
     "@typescript-eslint/parser": "^8.42.0",
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.2.1",
     "esbuild": "^0.25.10",
     "eslint": "^9.34.0",
     "mocha": "^11.7.2",

@@ -1,71 +1,51 @@
-# sqlc README
+# SQLC for VS Code
 
-This is the README for your extension "sqlc". After writing up a brief description, we recommend including the following sections.
+A VS Code extension that provides enhanced Go-to-Definition support for [sqlc](https://github.com/sqlc-dev/sqlc) generated Go code.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Go-to-Definition**: Jump from sqlc-generated Go methods directly to their corresponding SQL queries
+- **Automatic Indexing**: Automatically discovers and indexes sqlc configurations and SQL query files
+- **Real-time Updates**: Watches for changes to sqlc configuration files and SQL queries, keeping the index up-to-date
+- **Multi-workspace Support**: Works with multiple sqlc configurations in the same workspace
 
-For example if there is an image subfolder under your extension project workspace:
+## How it Works
 
-\!\[feature X\]\(images/feature-x.png\)
+The extension scans your workspace for `sqlc.yaml` and `sqlc.yml` configuration files, then indexes all SQL query files specified in the `queries` field. When you use Go-to-Definition (F12) on a sqlc-generated method name in Go code, it will take you directly to the corresponding SQL query definition.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+For example, if you have a SQL query like:
+```sql
+-- name: GetUser :one
+SELECT * FROM users WHERE id = $1;
+```
+
+And sqlc generates a Go method `GetUser()`, you can press F12 on the method name to jump to the SQL query.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- VS Code 1.104.1 or higher
+- A project using [sqlc](https://github.com/sqlc-dev/sqlc)
+- Valid `sqlc.yaml` or `sqlc.yml` configuration files in your workspace
 
-## Extension Settings
+## Development
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Reloading
 
-For example:
+- `yarn watch`
+- Start debugger in VSCode
 
-This extension contributes the following settings:
+### Testing
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+```bash
+yarn test
+```
 
-## Known Issues
+### Packaging
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+```bash
+yarn package
+```
 
-## Release Notes
+## License
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This project is licensed under the MIT License.
